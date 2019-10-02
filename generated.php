@@ -27,13 +27,18 @@
                       <center><a class="btn btn-primary text-white px-4 mt-5" href="index.php">Add New URL</a></center>
                     </div></div>';
                     }
+                    $URI = $_SERVER["REQUEST_URI"];
+                    $split = explode("generated.php", $URI);
+                    foreach($split as $splits){
+                      $_SESSION['path'] = $splits;
+                    }
                     if (isset($_SESSION['success'])) {
                           $links = explode(",", $_SESSION['success']);
                           $unique = array_unique($links);
                               foreach($unique as $key => $link){
-                                  $remove_link = explode("http://localhost/trimmer/", $link);
+                                  $remove_link = explode("http://localhost".$_SESSION['path'], $link);
                                     foreach($remove_link as $keys => $remove_links){
-                                      if($link == "http://localhost/trimmer/".$remove_links){
+                                      if($link == "http://localhost".$_SESSION['path'].$remove_links){
                                          echo '<div class="card">
                       <div class="card-header" id="headingOne">
                           <h5 class="mb-0">

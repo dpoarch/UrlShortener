@@ -97,7 +97,7 @@
 
   	public function generateLinkForShortURL($uniqueCode = '')
   	{
-  		return "http://localhost/UrlShortener/{$uniqueCode}";
+  		return "http://localhost/urlShortener/{$uniqueCode}";
   	}
 
 
